@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sem Chrysler NLEUKEU</title>
+<meta name="description" content="Portfolio de Sem Chrysler NLEUKEU NGUEDA, développeur backend JavaScript et Python, en recherche de stage à Montréal du 15 mars au 7 mai 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout : une page de documentation d'API vivante. En-tête collant, héros avec terminal,
+   projet phare avec schéma d'architecture, grille de projets, parcours en frise, bandeau de contact. */
+:root{
+  --bg:#f3f6f9; --surface:#ffffff; --raised:#eaf0f5; --fg:#122031; --muted:#556375; --line:#d5dde6;
+  --accent:#0a6a88; --accent-strong:#075169; --accent-soft:#d9edf4; --on-accent:#ffffff;
+  --get:#17784a; --post:#a35a06; --patch:#6a3fb0; --ws:#0a6a88;
+  --hero-1:#0b2233; --hero-2:#0f3a50; --hero-fg:#eaf4f8; --hero-muted:#a9c3d0;
+  --f-display:"Schibsted Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"Cascadia Code",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c131b; --surface:#131d28; --raised:#182634; --fg:#e4ecf3; --muted:#9aabbc; --line:#24364a;
+  --accent:#5ec6e6; --accent-strong:#8ad8ef; --accent-soft:#143041; --on-accent:#08151d;
+  --get:#5fd39a; --post:#f0b25c; --patch:#b99af0; --ws:#5ec6e6;
+  --hero-1:#08121b; --hero-2:#0d2a3a; --hero-fg:#eaf4f8; --hero-muted:#9fbccb; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c131b; --surface:#131d28; --raised:#182634; --fg:#e4ecf3; --muted:#9aabbc; --line:#24364a;
+  --accent:#5ec6e6; --accent-strong:#8ad8ef; --accent-soft:#143041; --on-accent:#08151d;
+  --get:#5fd39a; --post:#f0b25c; --patch:#b99af0; --ws:#5ec6e6;
+  --hero-1:#08121b; --hero-2:#0d2a3a; --hero-fg:#eaf4f8; --hero-muted:#9fbccb; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.6;margin:0}
+.in{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.12}
+h2{font-size:clamp(1.6rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.015em}
+h3{font-size:1.18rem;font-weight:700}
+p{margin:0;max-width:66ch}
+.eyebrow{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.sec{padding-block:72px;display:flex;flex-direction:column;gap:28px}
+.sec-head{display:flex;flex-direction:column;gap:8px}
+.sec-head p{color:var(--muted)}
+
+/* Navigation */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--hero-1)}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--hero-1) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+nav.top .in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:58px}
+.brand{font-family:var(--f-display);font-weight:800;color:var(--hero-fg);text-decoration:none;font-size:1.02rem;white-space:nowrap}
+.brand span{color:var(--accent)}
+.navlinks{display:flex;gap:4px;align-items:center}
+.navlinks a{color:var(--hero-muted);text-decoration:none;font-size:.92rem;padding:6px 10px;border-radius:6px}
+.navlinks a:hover{color:var(--hero-fg);background:rgba(255,255,255,.07)}
+.navlinks a.cta{background:var(--accent);color:#08151d;font-weight:700}
+@media (max-width:760px){.navlinks a:not(.cta){display:none}}
+
+/* Héros */
+.hero{background:radial-gradient(1100px 500px at 85% -10%,rgba(94,198,230,.22),transparent 60%),linear-gradient(160deg,var(--hero-1),var(--hero-2));color:var(--hero-fg)}
+.hero .in{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:72px 64px}
+.hero .in > *{min-width:0}
+.avail{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:.8rem;color:var(--hero-fg);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:#5fd39a;box-shadow:0 0 0 0 rgba(95,211,154,.6)}
+@media (prefers-reduced-motion:no-preference){.dot{animation:pulse 2.2s infinite}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(95,211,154,.55)}70%{box-shadow:0 0 0 9px rgba(95,211,154,0)}100%{box-shadow:0 0 0 0 rgba(95,211,154,0)}}
+.hero h1{font-size:clamp(2.3rem,5.6vw,3.7rem);font-weight:900;letter-spacing:-.025em;margin-top:22px}
+.hero h1 .role{display:block;font-weight:600;font-size:.42em;letter-spacing:0;color:var(--hero-muted);margin-top:14px}
+.hero h1 .role b{color:#8ad8ef;font-weight:700}
+.lead{margin-top:20px;font-size:1.13rem;color:var(--hero-fg);opacity:.92}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-body);font-weight:700;font-size:.97rem;padding:11px 18px;border-radius:9px;text-decoration:none;cursor:pointer;border:1px solid transparent}
+.btn.primary{background:var(--accent);color:#08151d}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{color:var(--hero-fg);border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)}
+.btn.ghost:hover{border-color:rgba(255,255,255,.5)}
+.btn svg{width:18px;height:18px;flex:none}
+
+.term{background:#081520;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;font-family:var(--f-mono);font-size:.8rem;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.term-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.08);color:#8fa9b8}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:#2c4352}
+.term-bar span{margin-left:auto}
+.term-bar .ok{color:#5fd39a;margin-left:0}
+.term pre{margin:0;padding:16px 18px;overflow-x:auto;line-height:1.75;color:#d7e6ee}
+.k{color:#8ad8ef}.s{color:#9be2b8}.n{color:#f6c37f}.c{color:#6c8797}
+
+/* Chiffres clés */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:-34px;position:relative;box-shadow:0 18px 40px -28px rgba(10,40,60,.45)}
+.stat{background:var(--surface);padding:20px 22px;display:flex;flex-direction:column;gap:2px}
+.stat b{font-family:var(--f-display);font-size:2rem;font-weight:900;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.93rem}
+
+/* Points forts */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pillar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.pillar .ico{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent)}
+.pillar .ico svg{width:22px;height:22px}
+.pillar p{color:var(--muted);font-size:.98rem}
+
+/* Compétences */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.skill h3{font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--f-mono);font-size:.76rem;padding:4px 9px;border-radius:6px;background:var(--raised);border:1px solid var(--line);color:var(--fg)}
+.chip.soon{border-style:dashed;color:var(--muted);background:transparent}
+
+/* Projet phare */
+.feature{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.feature > *{min-width:0}
+.feature .txt{padding:32px;display:flex;flex-direction:column;gap:16px}
+.feature .viz{background:var(--raised);border-left:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.tag{align-self:flex-start;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent-strong);font-weight:600}
+.feature h3{font-size:1.6rem;font-weight:800}
+.meta-line{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.feature ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+.feature li::marker{color:var(--accent)}
+.diagram{width:100%;height:auto;display:block}
+.diagram text{font-family:var(--f-mono);fill:var(--fg)}
+.diagram .lbl{font-size:11px;font-weight:600}
+.diagram .sub{font-size:9.5px;fill:var(--muted)}
+.diagram .box{fill:var(--surface);stroke:var(--line);stroke-width:1.2}
+.diagram .box.hl{stroke:var(--accent);stroke-width:2}
+.diagram .edge{stroke:var(--muted);stroke-width:1.3;fill:none}
+.diagram .edge.rt{stroke:var(--accent);stroke-dasharray:4 3}
+.diagram .ah{fill:var(--muted)}
+.diagram .ah.rt{fill:var(--accent)}
+.routes{border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow-x:auto}
+.route{display:grid;grid-template-columns:58px minmax(130px,1fr) minmax(140px,1.3fr);gap:10px;padding:7px 12px;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:.74rem;align-items:baseline;min-width:400px}
+.route:last-child{border-bottom:0}
+.route .d{font-family:var(--f-body);font-size:.84rem;color:var(--muted)}
+.m{font-weight:700}.m.get{color:var(--get)}.m.post{color:var(--post)}.m.patch{color:var(--patch)}.m.ws{color:var(--ws)}
+
+/* Autres projets */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:border-color .15s, transform .15s}
+.card:hover{border-color:var(--accent)}
+.grid .card:last-child:nth-child(odd){grid-column:1 / -1}
+@media (prefers-reduced-motion:no-preference){.card:hover{transform:translateY(-2px)}}
+.card .head{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.card .yr{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);white-space:nowrap}
+.card p{color:var(--muted);font-size:.98rem;flex:1}
+.card .foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.card .proof{font-size:.86rem;font-weight:700;color:var(--get)}
+.card a.repo{font-family:var(--f-mono);font-size:.8rem;font-weight:600;text-decoration:none}
+.card a.repo:hover{text-decoration:underline}
+
+/* Parcours */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.two > *{min-width:0}
+.col h3{font-size:1rem;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:14px}
+.timeline{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
+.t{position:relative;padding:0 0 22px 22px;display:flex;flex-direction:column;gap:1px}
+.t:last-child{padding-bottom:0}
+.t::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.t.alt::before{background:var(--bg);border-color:var(--muted)}
+.t .when{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.t .what{font-weight:700}
+.t .where{color:var(--muted);font-size:.95rem}
+
+/* Contact */
+.contact{background:linear-gradient(160deg,var(--hero-1),var(--hero-2));color:var(--hero-fg);border-radius:20px;padding:44px;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.contact > *{min-width:0}
+.contact h2{color:var(--hero-fg)}
+.contact p{color:var(--hero-muted);margin-top:12px}
+.clist{display:flex;flex-direction:column;gap:10px}
+.crow{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 12px;flex-wrap:wrap}
+.crow small{display:block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-muted)}
+.crow .val{font-family:var(--f-mono);font-size:.9rem;user-select:all;color:var(--hero-fg);word-break:break-all}
+.crow a.val{text-decoration:none}
+.copy{font:600 .8rem var(--f-body);color:var(--hero-fg);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:6px 10px;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.18)}
+.toast{font-family:var(--f-mono);font-size:.8rem;color:#5fd39a;min-height:1.2em}
+footer{padding-block:28px 40px;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media (max-width:900px){
+  .hero .in,.feature,.contact,.two{grid-template-columns:1fr}
+  .feature .viz{border-left:0;border-top:1px solid var(--line)}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pillars,.grid,.skills{grid-template-columns:1fr}
+  .sec{padding-block:52px}
+  .hero .in{padding-block:48px 60px}
+  .feature .txt,.contact{padding:24px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .rise{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+  .rise.d2{animation-delay:.08s}.rise.d3{animation-delay:.16s}
+  @keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Navigation principale">
+  <div class="in">
+    <a class="brand" href="#haut">Sem Chrysler <span>NLEUKEU</span></a>
+    <div class="navlinks">
+      <a href="#forces">Forces</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+      <a class="cta" href="#contact">Me contacter</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="haut">
+  <div class="in">
+    <div class="rise">
+      <span class="avail"><i class="dot"></i>Disponible pour un stage · 15 mars – 7 mai 2027</span>
+      <h1>Sem Chrysler NLEUKEU NGUEDA<span class="role">Développeur <b>backend JavaScript &amp; Python</b> · Montréal</span></h1>
+      <p class="lead">Je construis des API REST sécurisées, testées et conteneurisées. Étudiant au Collège de Maisonneuve, déjà diplômé d'un DUT et d'une licence, avec deux stages en entreprise. Je cherche un stage de 8 semaines à temps plein en backend, bases de données ou tests.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projets">Voir mes projets</a>
+        <a class="btn ghost" href="https://github.com/nleukeu76" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/sem-chrysler-nleukeu-ngueda-a59084341" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a>
+      </div>
+    </div>
+    <div class="term rise d2" aria-label="Exemple de réponse d'API présentant le profil">
+      <div class="term-bar"><i></i><i></i><i></i><span><span class="ok">200 OK</span> · GET /api/candidat</span></div>
+<pre><span class="c">// réponse JSON</span>
+{
+  <span class="k">"nom"</span>: <span class="s">"Sem Chrysler NLEUKEU"</span>,
+  <span class="k">"poste"</span>: <span class="s">"Stagiaire backend"</span>,
+  <span class="k">"stack"</span>: [<span class="s">"Node.js"</span>, <span class="s">"Express"</span>,
+            <span class="s">"PostgreSQL"</span>, <span class="s">"Python"</span>],
+  <span class="k">"stagesRealises"</span>: <span class="n">2</span>,
+  <span class="k">"disponible"</span>: <span class="s">"2027-03-15"</span>,
+  <span class="k">"duree"</span>: <span class="s">"8 semaines, temps plein"</span>,
+  <span class="k">"langues"</span>: [<span class="s">"fr"</span>, <span class="s">"en"</span>]
+}</pre>
+    </div>
+  </div>
+</header>
+
+<div class="in">
+  <div class="stats rise d3" role="list" aria-label="Chiffres clés">
+    <div class="stat" role="listitem"><b>2</b><span>stages en entreprise</span></div>
+    <div class="stat" role="listitem"><b>6</b><span>projets réalisés</span></div>
+    <div class="stat" role="listitem"><b>3</b><span>diplômes en informatique</span></div>
+    <div class="stat" role="listitem"><b>FR · EN</b><span>français et anglais</span></div>
+  </div>
+
+  <section class="sec" id="forces">
+    <div class="sec-head">
+      <span class="eyebrow">Ce que j'apporte</span>
+      <h2>Prêt à contribuer dès la première semaine</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        <h3>Backend sécurisé</h3>
+        <p>API REST en Node.js et Express : authentification par session et JWT, mots de passe bcrypt, contrôle d'accès par rôles et journal d'audit.</p>
+      </div>
+      <div class="pillar">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+        <h3>Tests et qualité</h3>
+        <p>Responsable des tests en équipe : parcours complets, cas d'erreur et pages non autorisées, avec Jest, Supertest et l'intégration continue GitHub Actions.</p>
+      </div>
+      <div class="pillar">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3>Habitué au travail d'équipe</h3>
+        <p>Sprints Scrum, revues de code et branches Git. Deux stages où j'ai livré de nouveaux modules à un rythme quotidien pour un vrai client.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projets" style="padding-top:0">
+    <div class="sec-head">
+      <span class="eyebrow">Projets</span>
+      <h2>Réalisations</h2>
+      <p>Des applications livrées en équipe, en stage et en formation, du mobile à l'API temps réel.</p>
+    </div>
+
+    <article class="feature">
+      <div class="txt">
+        <span class="tag">Projet phare · 2026</span>
+        <h3>CrimeTracker</h3>
+        <div class="meta-line">Équipe Scrum de 4 · Rôle : API backend et tests</div>
+        <p>Une application web pour les policiers : registre des personnes recherchées, signalements terrain, alertes et messagerie, mis à jour en temps réel pour tous les agents connectés.</p>
+        <ul>
+          <li>API développée avec un coéquipier : dossiers, utilisateurs, signalements, alertes, journal d'audit.</li>
+          <li>Accès sécurisé par session, JWT, bcrypt et contrôle par rôles (policier, superviseur, direction).</li>
+          <li>Temps réel avec Socket.IO : présence des agents et diffusion instantanée des changements.</li>
+          <li>Responsable des tests et du suivi de la CI GitHub Actions à chaque fusion.</li>
+        </ul>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">PostgreSQL</span><span class="chip">Socket.IO</span><span class="chip">React</span><span class="chip">Docker</span><span class="chip">Jest</span></div>
+        <a class="btn primary" style="align-self:flex-start" href="https://github.com/dr-arobase/projet-DA_3" target="_blank" rel="noopener">Voir le code sur GitHub</a>
+      </div>
+      <div class="viz">
+        <svg class="diagram" viewBox="0 0 360 250" role="img" aria-label="Architecture : le client React passe par nginx vers l'API Express et Socket.IO, qui lit et écrit dans PostgreSQL ; Jest et GitHub Actions testent l'API.">
+          <defs>
+            <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+            <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah rt" d="M0 0L10 5L0 10z"/></marker>
+          </defs>
+          <rect class="box" x="10" y="16" width="112" height="46" rx="8"/>
+          <text class="lbl" x="66" y="36" text-anchor="middle">Client React</text>
+          <text class="sub" x="66" y="51" text-anchor="middle">Vite · navigateur</text>
+          <rect class="box" x="10" y="102" width="112" height="46" rx="8"/>
+          <text class="lbl" x="66" y="122" text-anchor="middle">nginx</text>
+          <text class="sub" x="66" y="137" text-anchor="middle">proxy · Docker</text>
+          <rect class="box hl" x="176" y="86" width="174" height="78" rx="10"/>
+          <text class="lbl" x="263" y="108" text-anchor="middle">API Express</text>
+          <text class="sub" x="263" y="124" text-anchor="middle">JWT · rôles · audit</text>
+          <text class="sub" x="263" y="139" text-anchor="middle">6 modules REST</text>
+          <text class="sub" x="263" y="154" text-anchor="middle">+ Socket.IO</text>
+          <rect class="box" x="176" y="194" width="174" height="44" rx="8"/>
+          <text class="lbl" x="263" y="213" text-anchor="middle">PostgreSQL</text>
+          <text class="sub" x="263" y="228" text-anchor="middle">volume Docker</text>
+          <rect class="box" x="176" y="16" width="174" height="44" rx="8"/>
+          <text class="lbl" x="263" y="35" text-anchor="middle">Jest · Supertest</text>
+          <text class="sub" x="263" y="50" text-anchor="middle">CI GitHub Actions</text>
+          <path class="edge" d="M66 62 V100" marker-end="url(#a1)"/>
+          <path class="edge" d="M122 125 H174" marker-end="url(#a1)"/>
+          <text class="sub" x="148" y="118" text-anchor="middle">REST</text>
+          <path class="edge rt" d="M176 98 C 140 78, 130 50, 124 44" marker-end="url(#a2)"/>
+          <text class="sub" x="150" y="70" text-anchor="middle" style="fill:var(--accent)">temps réel</text>
+          <path class="edge" d="M263 164 V192" marker-end="url(#a1)"/>
+          <path class="edge" d="M263 60 V84" marker-end="url(#a1)"/>
+        </svg>
+        <div class="routes" role="table" aria-label="Extrait des routes de l'API">
+          <div class="route" role="row"><span class="m post">POST</span><span>/api/auth</span><span class="d">Connexion, session et JWT</span></div>
+          <div class="route" role="row"><span class="m get">GET</span><span>/api/criminals</span><span class="d">Dossiers et statuts versionnés</span></div>
+          <div class="route" role="row"><span class="m patch">PATCH</span><span>/api/users</span><span class="d">Promotion selon le rôle</span></div>
+          <div class="route" role="row"><span class="m post">POST</span><span>/api/alerts</span><span class="d">Diffusion d'alertes</span></div>
+          <div class="route" role="row"><span class="m ws">WS</span><span>alert:broadcast</span><span class="d">Notification en direct</span></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="grid">
+      <article class="card">
+        <div class="head"><h3>Jeu d'échecs en ligne</h3><span class="yr">2026 · équipe</span></div>
+        <p>Deux joueurs s'affrontent chacun dans son navigateur. Connexion GitHub, parties privées par code et classement Elo recalculé après chaque partie. La position est stockée en base pour survivre à un redémarrage.</p>
+        <div class="chips"><span class="chip">Express</span><span class="chip">SQLite</span><span class="chip">React Router SSR</span><span class="chip">chess.js</span><span class="chip">Docker</span></div>
+        <div class="foot"><span class="proof">Images publiées sur ghcr.io</span><a class="repo" href="https://github.com/Lenrics-01/TP1-AppWeb2_Jeu_d-checs" target="_blank" rel="noopener">Voir le code →</a></div>
+      </article>
+      <article class="card">
+        <div class="head"><h3>Téléconsultation médecin–patient</h3><span class="yr">2023 – 2024</span></div>
+        <p>Application Android qui met en relation les médecins et les patients d'une même ville : prise de rendez-vous et consultation en ligne. Commencée en stage chez SIGERIS, devenue mon projet de licence.</p>
+        <div class="chips"><span class="chip">Kotlin</span><span class="chip">Android</span><span class="chip">MySQL</span></div>
+        <div class="foot"><span class="proof">Testée par de vrais utilisateurs, appréciée par le jury</span></div>
+      </article>
+      <article class="card">
+        <div class="head"><h3>Gestion automatisée des ventes</h3><span class="yr">2024 · stage</span></div>
+        <p>Application auto-hébergée développée pour un client pendant mon stage chez TATIOR Coopération, pour automatiser le suivi de ses ventes. Nouveaux modules livrés à chaque sprint.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">React.js</span></div>
+        <div class="foot"><span class="proof">Déployée chez un vrai client</span></div>
+      </article>
+      <article class="card">
+        <div class="head"><h3>PyForum</h3><span class="yr">2025 · équipe</span></div>
+        <p>Forum en ligne de commande en Python : utilisateurs, forums, publications et commentaires, organisés selon une architecture MVP avec persistance en CSV et JSON.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">MVP</span><span class="chip">CSV / JSON</span></div>
+        <div class="foot"><span></span><a class="repo" href="https://github.com/faridhdianda/2025H-420-2C3-MA-Pyforum-tp2" target="_blank" rel="noopener">Voir le code →</a></div>
+      </article>
+      <article class="card">
+        <div class="head"><h3>Alerte température et luminosité</h3><span class="yr">2026 · IoT</span></div>
+        <p>Montage Arduino qui lit la température et la lumière, déclenche LED et buzzer et bascule entre mode automatique et manuel. Les mesures sont envoyées à un programme Python par le port série.</p>
+        <div class="chips"><span class="chip">Arduino</span><span class="chip">C++</span><span class="chip">Python</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="competences" style="padding-top:0">
+    <div class="sec-head">
+      <span class="eyebrow">Compétences</span>
+      <h2>Ma boîte à outils</h2>
+    </div>
+    <div class="skills">
+      <div class="skill"><h3>Backend &amp; API</h3><div class="chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">API REST</span><span class="chip">Socket.IO</span><span class="chip">Laravel</span><span class="chip">Swagger</span></div></div>
+      <div class="skill"><h3>Sécurité</h3><div class="chips"><span class="chip">Sessions</span><span class="chip">JWT</span><span class="chip">OAuth GitHub</span><span class="chip">RBAC</span><span class="chip">bcrypt</span></div></div>
+      <div class="skill"><h3>Bases de données</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span><span class="chip">Modélisation</span></div></div>
+      <div class="skill"><h3>Langages</h3><div class="chips"><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">PHP</span><span class="chip">Kotlin</span><span class="chip">HTML / CSS</span></div></div>
+      <div class="skill"><h3>Tests &amp; outils</h3><div class="chips"><span class="chip">Jest</span><span class="chip">Supertest</span><span class="chip">GitHub Actions</span><span class="chip">Git</span><span class="chip">Docker</span><span class="chip">React</span></div></div>
+      <div class="skill"><h3>Méthodes &amp; cloud</h3><div class="chips"><span class="chip">Scrum</span><span class="chip">UML</span><span class="chip soon">Azure · en préparation</span><span class="chip soon">CCNA · en préparation</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="parcours" style="padding-top:0">
+    <div class="sec-head">
+      <span class="eyebrow">Parcours</span>
+      <h2>Formation et expérience</h2>
+    </div>
+    <div class="two">
+      <div class="col">
+        <h3>Formation</h3>
+        <div class="timeline">
+          <div class="t"><span class="when">Août 2024 – mai 2027</span><span class="what">DEC Techniques de l'informatique, développement d'applications</span><span class="where">Collège de Maisonneuve, Montréal</span></div>
+          <div class="t"><span class="when">Juin 2024</span><span class="what">Licence, conception et développement réseau Internet</span><span class="where">Cameroun</span></div>
+          <div class="t"><span class="when">2021 – 2023</span><span class="what">DUT, Diplôme universitaire de technologie</span><span class="where">IUT Fotso Victor de Bandjoun, Cameroun</span></div>
+        </div>
+      </div>
+      <div class="col">
+        <h3>Expérience</h3>
+        <div class="timeline">
+          <div class="t"><span class="when">Avr. – juin 2024</span><span class="what">Stagiaire développeur full stack</span><span class="where">TATIOR Coopération, Douala</span></div>
+          <div class="t"><span class="when">Avr. – juin 2023</span><span class="what">Stagiaire développeur frontend</span><span class="where">SIGERIS SARL, Cameroun</span></div>
+          <div class="t alt"><span class="when">Janv. 2025 – aujourd'hui</span><span class="what">Agent de sécurité, en parallèle des études</span><span class="where">KONO Sécurité et AG3 Sécurité, Montréal</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <span class="eyebrow" style="color:#8ad8ef">Contact</span>
+      <h2 style="margin-top:8px">Vous cherchez un stagiaire backend pour mars 2027 ?</h2>
+      <p>Stage de 8 semaines à temps plein, du 15 mars au 7 mai 2027, à Montréal. Je réponds rapidement, en français ou en anglais.</p>
+    </div>
+    <div class="clist">
+      <div class="crow"><div><small>Courriel</small><span class="val">semchryslernleukeu@gmail.com</span></div><button class="copy" id="copy-email" data-copy="semchryslernleukeu@gmail.com">Copier</button></div>
+      <div class="crow"><div><small>Téléphone</small><span class="val">514 707-2498</span></div><button class="copy" id="copy-phone" data-copy="514 707-2498">Copier</button></div>
+      <div class="crow"><div><small>LinkedIn</small><a class="val" href="https://www.linkedin.com/in/sem-chrysler-nleukeu-ngueda-a59084341" target="_blank" rel="noopener">Voir mon profil →</a></div></div>
+      <div class="toast" id="toast" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <footer><span>Sem Chrysler NLEUKEU NGUEDA · Montréal (Québec)</span><span>Node.js · Python · PostgreSQL</span></footer>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById('toast'), v=b.getAttribute('data-copy');
+    function done(){t.textContent='Copié : '+v;}
+    function fallback(){var el=b.parentElement.querySelector('.val');var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);t.textContent='Texte sélectionné, copiez-le avec Ctrl+C.';}
+    try{navigator.clipboard.writeText(v).then(done,fallback);}catch(e){fallback();}
+  });
+});
+</script>
+
+</body>
+</html>
